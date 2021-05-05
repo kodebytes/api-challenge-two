@@ -1,0 +1,40 @@
+:root{
+    --footer: #f05454;
+    --primary: #222831;
+    --secondary: #30475e;
+    --main-bg: #dddddd;
+}
+
+body{
+    margin:100px;
+    background: var(--main-bg)
+}
+img{
+  height:150px;
+  width: 150px;
+}
+
+.card {
+  margin: auto;
+}
+
+#top-btn {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 99;
+}
+
+#coin-select-header {
+  background: var(--footer)
+}
+
+#crypto-image{
+  object-fit: cover;
+}
+
+#header {
+    height: 200px;
+    margin-bottom: 30px;
+}
