@@ -77,7 +77,7 @@ const loadLive = async (fiat) => {
     let imageUrl = cryptoList[k].icon_url;
     let template = `
     <div class="col align-self-center align-items-center justify-content-center" id="main-body">
-      <div class="card mb-2 shadow text-end border border-1 border-dark" style="max-width: 450px;" id="${k}">
+      <div class="card mb-2 shadow text-end" style="max-width: 450px;" id="${k}">
         <div class="row">
           <div class="col-md-3">
             <img src="${imageUrl}" alt="..." id="crypto-image">

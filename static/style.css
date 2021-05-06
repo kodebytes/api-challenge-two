@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap');
+
 :root{
-    --footer: #f05454;
+    --footer: #ca4c4c;
     --primary: #222831;
     --secondary: #30475e;
     --main-bg: #dddddd;
@@ -7,7 +9,8 @@
 
 body{
     margin:100px;
-    background: var(--main-bg)
+    background: var(--primary);
+    font-family: "Abel", sans-serif !important;
 }
 img{
   height:150px;
@@ -16,6 +19,7 @@ img{
 
 .card {
   margin: auto;
+  border: 1px solid var(--primary);
 }
 
 #top-btn {
