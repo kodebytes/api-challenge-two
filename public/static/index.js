@@ -1,5 +1,5 @@
 const baseURL = "http://api.coinlayer.com/api/";
-const key = "?access_key=90736134eff058d655f1444b6dbbf471";
+const key = "?access_key=e821075ef1aad8b5e40eacfca5721a3d";
 const listEP = "list";
 const liveEp = "live";
 
@@ -72,7 +72,7 @@ const loadLive = async (fiat) => {
     elemCurrencyEU.setAttribute("class", "btn btn-primary");
   }
   elemCryptoGrid.querySelectorAll("*").forEach(node => node.remove())
-
+  console.log(liveList);
   for (let [k, v] of Object.entries(liveList.rates)) {
     let imageUrl = cryptoList[k].icon_url;
     let template = `
