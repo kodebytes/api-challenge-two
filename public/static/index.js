@@ -20,24 +20,24 @@ let currentCoin = "";
 // live and historical URL - &symbols=BTC,ETH
 
 const renderCryptoList = () => {
-  tempList.forEach(x => {
+  tempList.forEach((x) => {
     let cOption = document.createElement("option");
     cOption.setAttribute("value", x);
     elemCryptoList.appendChild(cOption);
-  })
-}
+  });
+};
 
 const jumpToCoin = (symbol) => {
-  if(currentCoin){
+  if (currentCoin) {
     document.getElementById(currentCoin).setAttribute("class", "card mb-2 shadow text-end");
     currentCoin = "";
   }
-  if(symbol){
+  if (symbol) {
     document.getElementById(symbol).setAttribute("class", "card mb-2 shadow text-end border-primary border border-5");
-    document.getElementById(symbol).scrollIntoView({behavior: "smooth", block: "center"});
+    document.getElementById(symbol).scrollIntoView({ behavior: "smooth", block: "center" });
     currentCoin = symbol;
   }
-}
+};
 
 const showTopBtn = () => {
   if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
@@ -45,12 +45,12 @@ const showTopBtn = () => {
   } else {
     elemTopBtn.style.display = "none";
   }
-}
+};
 
 const scrollTop = () => {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
-}
+};
 
 const loadLive = async (fiat) => {
   let url = baseURL + liveEp + key;
@@ -63,15 +63,15 @@ const loadLive = async (fiat) => {
       liveTarget = json.target;
       liveList.rates = json.rates;
     });
-  
-  if(fiat){
+
+  if (fiat) {
     elemCurrencyEU.setAttribute("class", "btn btn-primary active");
     elemCurrencyUS.setAttribute("class", "btn btn-primary");
-  }else{
+  } else {
     elemCurrencyUS.setAttribute("class", "btn btn-primary active");
     elemCurrencyEU.setAttribute("class", "btn btn-primary");
   }
-  elemCryptoGrid.querySelectorAll("*").forEach(node => node.remove())
+  elemCryptoGrid.querySelectorAll("*").forEach((node) => node.remove());
   console.log(liveList);
   for (let [k, v] of Object.entries(liveList.rates)) {
     let imageUrl = cryptoList[k].icon_url;
@@ -93,7 +93,7 @@ const loadLive = async (fiat) => {
       </div>
     </div>`;
     elemCryptoGrid.insertAdjacentHTML("beforeend", template);
-    tempList.push(k)
+    tempList.push(k);
   }
   renderCryptoList();
 };
@@ -108,11 +108,13 @@ const loadData = async () => {
   loadLive();
 };
 
-window.onscroll = function() {showTopBtn()};
+window.onscroll = function () {
+  showTopBtn();
+};
 
 elemCryptoInput.addEventListener("change", (e) => jumpToCoin(e.target.value));
 elemCurrencyUS.addEventListener("click", (e) => loadLive());
-elemCurrencyEU.addEventListener("click", (e) => loadLive("EUR"))
-elemTopBtn.addEventListener("click", (e) => scrollTop())
+elemCurrencyEU.addEventListener("click", (e) => loadLive("EUR"));
+elemTopBtn.addEventListener("click", (e) => scrollTop());
 
 loadData();
